@@ -1,0 +1,23 @@
+%{
+
+int yywrap();
+%}
+
+%%
+[A-Z]    { 
+    putchar(yytext[0] + 32);  
+}
+[a-z]    { 
+    putchar(yytext[0] - 32);  
+}
+.|\n     { 
+    putchar(yytext[0]);      
+}
+%%
+int yywrap() {
+    return 1;
+}
+int main() {
+    yylex();
+    return 0;
+}
